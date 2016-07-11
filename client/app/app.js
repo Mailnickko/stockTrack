@@ -1,6 +1,7 @@
 angular.module('stockTrack', [
   'stockTrack.search',
   'stockTrack.manage',
+  'stockTrack.services',
   'ui.router',
   'ngMessages'
 ])
