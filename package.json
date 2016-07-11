@@ -1,0 +1,35 @@
+{
+  "name": "myMVP",
+  "version": "1.0.0",
+  "description": "<!-- > This material was originally posted [here](http://www.quora.com/What-is-Amazons-approach-to-product-development-and-product-management). It is reproduced here for posterities sake.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Mailnickko/stockTrack.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Mailnickko/stockTrack/issues"
+  },
+  "homepage": "https://github.com/Mailnickko/stockTrack#readme",
+  "dependencies": {
+    "body-parser": "^1.15.2",
+    "express": "^4.14.0",
+    "morgan": "^1.7.0",
+    "grunt": "^0.4.4",
+    "grunt-contrib-jshint": "^1.0.0",
+    "grunt-contrib-concat": "^0.3.0",
+    "grunt-contrib-uglify": "^0.4.0",
+    "grunt-contrib-watch": "^0.6.1",
+    "grunt-shell": "^0.6.4",
+    "grunt-contrib-cssmin": "^0.9.0",
+    "grunt-nodemon": "^0.2.1",
+    "grunt-mocha-test": "^0.10.0",
+    "mongoose": "~3.8.8"
+  }
+}

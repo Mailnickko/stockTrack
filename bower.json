@@ -1,0 +1,26 @@
+{
+  "name": "myMVP",
+  "homepage": "https://github.com/Mailnickko/stockTrack",
+  "authors": [
+    "Nicholas Ko <mailnickko@gmail.com>"
+  ],
+  "description": "",
+  "main": "",
+  "moduleType": [],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "client/lib",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "^1.5.7",
+    "jquery": "2.2.4",
+    "bootstrap": "^3.3.6",
+    "angular-ui-router": "^0.3.1",
+    "angular-messages": "^1.5.7"
+  }
+}
