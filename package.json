@@ -16,6 +16,10 @@
   "bugs": {
     "url": "https://github.com/Mailnickko/stockTrack/issues"
   },
+  "scripts": {
+    "start": "node server/server.js",
+    "postinstall": "bower install"
+  },
   "homepage": "https://github.com/Mailnickko/stockTrack#readme",
   "dependencies": {
     "body-parser": "^1.15.2",
