@@ -26,11 +26,17 @@ angular.module('stockTrack.search', [])
     }
     $scope.searchQuery = '';
   }
+
+  $scope.getStocks = function() {
+    Stock.getStocks()
+      .then(function(stocks) {
+        $scope.stocks = stocks;
+      })
+  }
+
   $scope.addStock = function(symbol) {
     Stock.addStock(symbol)
       .then(function(result) {
-        $scope.stocks = result;
-        console.log($scope.stocks);
       })
   }
 });
