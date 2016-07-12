@@ -14,9 +14,9 @@ angular.module('stockTrack', [
         controller: 'searchController'
       })
       .state('manage', {
-      templateUrl: 'app/manageStock/manageStock.html',
-      url: '/manage',
-      controller: 'manageController'
+        templateUrl: 'app/manageStock/manageStock.html',
+        url: '/manage',
+        controller: 'manageController'
       })
 
       $urlRouterProvider.otherwise('/search');

@@ -8,12 +8,17 @@ var StockSchema = new mongoose.Schema({
   low: Number,
   lastPrice: Number,
   shares: {
-    type: Number, default: 0
+    type: Number, default: 1
   }
 })
 
 StockSchema.methods.buyMoreShares = function() {
   this.shares++;
+  this.save();
+}
+
+StockSchema.methods.removeShares = function() {
+  this.shares--;
   this.save();
 }
 

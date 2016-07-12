@@ -1,7 +1,6 @@
 angular.module('stockTrack.search', [])
 
 .controller('searchController', function($scope, Stock) {
-  $scope.shares = 0;
 
   $scope.searchStock = function() {
     $scope.showErr = false;
@@ -34,9 +33,28 @@ angular.module('stockTrack.search', [])
       })
   }
 
+  $scope.getStocks();
+
   $scope.addStock = function(symbol) {
     Stock.addStock(symbol)
       .then(function(result) {
+        console.log('In PROMISE');
+        $scope.getStocks();
       })
+      .catch(function(err) {
+        console.log('error!');
+      });
+      // $scope.getStocks();
+  }
+
+  $scope.removeShare = function(stock) {
+    Stock.removeShare(stock)
+    .then(function() {
+      $scope.getStocks();
+    })
+  }
+
+  $scope.removeStock = function(stock) {
+    Stock.removeStock(stock);
   }
 });

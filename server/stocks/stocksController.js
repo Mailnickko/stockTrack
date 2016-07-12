@@ -44,6 +44,31 @@ module.exports = (function() {
           })
         }
       })
+    },
+
+    removeShare: function(req, res) {
+      Stock.findOne({
+        _id: req.params.id
+      }, function(err, stock) {
+          if (err) {
+            res.json(err)
+          } else {
+            stock.removeShares();
+            console.log('Share Removed')
+          }
+      })
+    },
+
+    removeStock: function(req, res) {
+      Stock.remove({
+        _id: req.params.id
+      }, function(err, stock) {
+          if (err) {
+            res.json(err)
+          } else {
+            res.send('DELETED STOCK')
+          }
+      })
     }
   }
 })();

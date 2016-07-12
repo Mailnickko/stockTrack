@@ -9,6 +9,7 @@ angular.module('stockTrack.services', [])
           url: '/stocks'
         })
         .then(function(stocks) {
+          console.log("GETTING IT", stocks.data);
           return stocks.data;
         })
         .catch(function(err) {
@@ -43,12 +44,25 @@ angular.module('stockTrack.services', [])
               lastPrice: stock.data.LastPrice
             }
           })
-          // console.log("SERVICES", stock.data)
-          // result.push(stock.data);
-          // return result;
         }).catch(function(err) {
           console.log("Error when adding stock");
         })
-      }
+      },
+
+      removeShare: function(stock) {
+        console.log('STOCK TO DELETE', stock);
+        return $http.put('/removeShare/' + stock._id)
+        .then(function() {
+          console.log('HUZZAH')
+        })
+      },
+
+      removeStock: function(stock) {
+        console.log('STOCK TO DELETE', stock._id);
+        return $http.delete('/removeStock/' + stock._id)
+        .then(function() {
+          console.log('success');
+        })
+      },
     }
   })

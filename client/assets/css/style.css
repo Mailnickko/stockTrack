@@ -1,0 +1,27 @@
+#title {
+  background-color: darkblue;
+  color: white;
+  padding: 10px;
+  text-align: center;
+}
+
+.axis path,
+.axis line {
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges;
+}
+
+.x.axis path {
+  display: none;
+}
+
+.line {
+  fill: none;
+  stroke: limegreen;
+  stroke-width: 2px;
+}
+
+svg {
+  margin-left: 100px;
+}

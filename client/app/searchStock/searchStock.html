@@ -38,17 +38,19 @@
               <th>Low</th>
               <th>Last Price</th>
               <th>Shares</th>
+              <th>Action</th>
         </tr>
       </thead>
       <tbody>
         <tr ng-repeat="stock in stocks">
-          <td>{{stock.Symbol}}</td>
-          <td>{{stock.Name}}</td>
-          <td>{{stock.Open}}</td>
-          <td>{{stock.High}}</td>
-          <td>{{stock.Low}}</td>
-          <td>{{stock.LastPrice}}</td>
-          <td>{{shares}}</td>
+          <td>{{stock.symbol}}</td>
+          <td>{{stock.name}}</td>
+          <td>{{stock.open}}</td>
+          <td>{{stock.high}}</td>
+          <td>{{stock.low}}</td>
+          <td>{{stock.lastPrice | currency: usd}}</td>
+          <td>{{stock.shares}}</td>
+          <td><button ng-click="removeShare(stock)">Remove Share</button> | <button ng-click="removeStock(stock)">Remove Stock</button></td>
         </tr>
       </tbody>
     </table>
