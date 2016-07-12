@@ -4,7 +4,7 @@ angular.module('stockTrack.services', [])
     return {
       searchStock: function(stock) {
         //returns array of objects
-        return $http.jsonp(`//dev.markitondemand.com/MODApis/Api/v2/Lookup/jsonp?input=${stock}&jsoncallback=JSON_CALLBACK`)
+        return $http.get(`http://dev.markitondemand.com/MODApis/Api/v2/Lookup/jsonp?input=${stock}&jsoncallback=JSON_CALLBACK`)
         .then(function(data) {
           console.log(data);
           return data;
