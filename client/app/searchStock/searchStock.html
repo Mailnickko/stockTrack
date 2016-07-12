@@ -1,14 +1,14 @@
-<h2>Search for stocks</h2>
-
   <form novalidate>
     <label> Search Keyword(s): </label>
     <input type="text" ng-model="searchQuery">
     <input type="button" ng-click="searchStock()" value="Search">
   </form>
+  <h4 ng-show='showErr' style='color: red'>Please enter a valid search!</h4>
+  <h4 ng-show='noneFound' style='color: red'>Sorry, no such stock exists!</h4>
 
-  <div>
+  <div ng-show="showTable">
     <h3>Search Results</h3>
-    <table ng-show="showTable" class="table table-bordered table-striped">
+    <table class="table table-bordered table-striped">
       <thead>
         <tr>
           <th>Name</th>
