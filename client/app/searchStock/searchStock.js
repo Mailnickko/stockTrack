@@ -5,14 +5,17 @@ angular.module('stockTrack.search', [])
     if ($scope.searchQuery === null || $scope.searchQuery === '') {
       return false;
     } else {
-      Stock.searchStock($scope.searchQuery)
-        .then(function(result) {
-          $scope.searchResults = result;
+      var promise = Stock.searchStock($scope.searchQuery);
+
+        promise.then(function(result) {
+          $scope.searchResults = result.data;
+          $scope.showTable = true;
+          console.log($scope.searchResults);
         })
         .catch(function(err) {
-          console.log('Something broke: ' + err);
+          console.log('Error in controller: ' + err);
         });
-      $scope.searchQuery = '';
     }
+    $scope.searchQuery = '';
   }
 });

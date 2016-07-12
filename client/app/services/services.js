@@ -3,10 +3,14 @@ angular.module('stockTrack.services', [])
   .factory('Stock', function($http) {
     return {
       searchStock: function(stock) {
-        return $http.jsonp(`http://dev.markitondemand.com/MODApis/Api/v2/Quote/jsonp?symbol=${stock}&callback=JSON_CALLBACK`)
+        //returns array of objects
+        return $http.jsonp(`http://dev.markitondemand.com/MODApis/Api/v2/Lookup/jsonp?input=${stock}&jsoncallback=JSON_CALLBACK`)
         .then(function(data) {
-          console.log(data)
+          console.log(data);
           return data;
+        })
+        .catch(function(err) {
+          console.log('Error in factory: ' + err);
         })
       }
     }
