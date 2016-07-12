@@ -1,7 +1,7 @@
 angular.module('stockTrack.search', [])
 
 .controller('searchController', function($scope, Stock) {
-
+  $scope.shares = 0;
 
   $scope.searchStock = function() {
     $scope.showErr = false;
@@ -25,5 +25,12 @@ angular.module('stockTrack.search', [])
         });
     }
     $scope.searchQuery = '';
+  }
+  $scope.addStock = function(symbol) {
+    Stock.addStock(symbol)
+      .then(function(result) {
+        $scope.stocks = result;
+        console.log($scope.stocks);
+      })
   }
 });

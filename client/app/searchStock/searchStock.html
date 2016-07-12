@@ -25,3 +25,31 @@
       </tbody>
     </table>
   </div>
+
+  <div>
+    <h2>Your Portfolio</h2>
+    <table class="table table-bordered table-striped">
+      <thead>
+        <tr>
+          <th>Symbol</th>
+          <th>Name</th>
+              <th>Open</th>
+              <th>High</th>
+              <th>Low</th>
+              <th>Last Price</th>
+              <th>Shares</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="stock in stocks">
+          <td>{{stock.Symbol}}</td>
+          <td>{{stock.Name}}</td>
+          <td>{{stock.Open}}</td>
+          <td>{{stock.High}}</td>
+          <td>{{stock.Low}}</td>
+          <td>{{stock.LastPrice}}</td>
+          <td>{{shares}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
