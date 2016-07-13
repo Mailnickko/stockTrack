@@ -6,18 +6,14 @@ var app = express();
 require('./config/middleware.js')(app, express);
 require('./config/routes.js')(app, express);
 
-var uristring;
-
-if (process.env.NODE_ENV === 'production') {
-  uristring = 'mongodb://heroku_znj2r445:g3bmj3gqenjh9qsnf2bpjth9fl@ds029328.mlab.com:29328/heroku_znj2r445';
-} else {
-  uristring = 'mongodb://localhost/stockTrack';
-}
+var uristring =
+    'mongodb://heroku_hpg01p4n:u0e34oumotdd1mjq5urrjd43j1@ds017205.mlab.com:17205/heroku_hpg01p4n' ||
+    'mongodb://localhost/stockTrack';
 
 var port = process.env.PORT || 3000;
 
 app.listen(port, function() {
-  console.log('connected to ' + port)
+  console.log('connected!')
 })
 
 mongoose.connect(uristring, function (err, res) {
