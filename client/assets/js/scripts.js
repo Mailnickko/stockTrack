@@ -1,15 +1,19 @@
 var sales = [
-  {"name":"Alphabet Inc","shares":2},
-  {"name":"McDonald's Corp","shares":2},
-  {"name":"Yum! Brands Inc","shares":2},
-  {"name":"Domino's Pizza Inc","shares":4},
-  {"name":"Apple Inc","shares":3},
-  {"name":"Starbucks Corp","shares":6}
+  {"symbol":"GOOGL","shares":2},
+  {"symbol":"MCD","shares":2},
+  {"symbol":"YUM","shares":2},
+  {"symbol":"DPZ","shares":4},
+  {"symbol":"AAPL","shares":3},
+  {"symbol":"SBUX","shares":6}
 ];
 
 //set up the angles of the pie chart using the pie layout helper
 var pie = d3.layout.pie()
-  .value(function(d) { return d.shares })
+  .value(function(d) {
+    return d.shares
+  })
+
+
 
 //connect our data to the slices
 var slices = pie(sales);
@@ -23,9 +27,10 @@ var arc = d3.svg.arc()
 var color = d3.scale.category10();
 
 
-var svg = d3.select('svg.pie');
+var svg = d3.select('svg.pie')
 var g = svg.append('g')
   .attr('transform', 'translate(200, 100)')
+  .attr('class', 'graph')
 
 g.selectAll('path.slice')
   .data(slices)
@@ -34,7 +39,7 @@ g.selectAll('path.slice')
         .attr('class', 'slice')
         .attr('d', arc)
         .attr('fill', function(d) {
-          return color(d.data.name);
+          return color(d.data.symbol);
         });
 
 // building a legend
@@ -44,7 +49,7 @@ svg.append('g')
     .data(slices)
       .enter()
         .append('text')
-          .text(function(d) { return '• ' + d.data.name + ' (' + d.data.shares + ')'; })
-          .attr('fill', function(d) { return color(d.data.name); })
+          .text(function(d) { return '• ' + d.data.symbol + ' (' + d.data.shares + ')'; })
+          .attr('fill', function(d) { return color(d.data.symbol); })
           .attr('y', function(d, i) { return 20 * (i + 1); })
-          .attr('margin-right', 50 + 'px')
+

@@ -39,7 +39,7 @@ module.exports = (function() {
               console.log('Error in addStocks');
               res.json(err);
             } else {
-              console.log('Stock saved!');
+              res.send('save completed');
             }
           })
         }

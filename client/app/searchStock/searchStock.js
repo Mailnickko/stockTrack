@@ -30,6 +30,7 @@ angular.module('stockTrack.search', [])
     Stock.getStocks()
       .then(function(stocks) {
         $scope.stocks = stocks;
+        console.log("OVER HERE", $scope.stocks)
       })
   }
 
@@ -40,6 +41,7 @@ angular.module('stockTrack.search', [])
       .then(function(result) {
         console.log('In PROMISE');
         $scope.getStocks();
+        $scope.$digest();
       })
       .catch(function(err) {
         console.log('error!');
@@ -50,11 +52,14 @@ angular.module('stockTrack.search', [])
   $scope.removeShare = function(stock) {
     Stock.removeShare(stock)
     .then(function() {
-      $scope.getStocks();
+      $scope.$apply(function() {
+        $scope.getStocks();
+      });
     })
   }
 
   $scope.removeStock = function(stock) {
     Stock.removeStock(stock);
+    $scope.$digest();
   }
 });
