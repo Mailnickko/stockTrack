@@ -41,25 +41,23 @@ angular.module('stockTrack.search', [])
       .then(function(result) {
         console.log('In PROMISE');
         $scope.getStocks();
-        $scope.$digest();
       })
       .catch(function(err) {
         console.log('error!');
       });
-      // $scope.getStocks();
   }
 
   $scope.removeShare = function(stock) {
     Stock.removeShare(stock)
     .then(function() {
-      $scope.$apply(function() {
         $scope.getStocks();
-      });
     })
   }
 
   $scope.removeStock = function(stock) {
-    Stock.removeStock(stock);
-    $scope.$digest();
+    Stock.removeStock(stock)
+      .then(function() {
+        $scope.getStocks();
+      })
   }
 });

@@ -2,28 +2,29 @@ var Stock = require('./stocksModel.js');
 var Q = require('q');
 
 //promisify methods
-
+var findStocks = Q.nbind(Stock.find, Stock);
+var findStock = Q.nbind(Stock.findOne, Stock);
 module.exports = (function() {
   return {
 
 
-    getStocks: function(req, res) {
-      Stock.find({}, function(err, results) {
-        if (err) {
-          console.log('Err in stocks controller');
-          res.json(err);
-        } else {
-          res.json(results);
-        }
-      })
+    getStocks: function(req, res, next) {
+      findStocks({})
+        .then(function(stocks) {
+          res.json(stocks);
+        })
+        .catch(function(err) {
+          next(new Error('No Stocks Here'))
+        })
     },
 
-    addStocks: function(req, res) {
+    addStocks: function(req, res, next) {
       Stock.findOne({
         symbol: req.body.symbol
       }, function(err, stock) {
         if (stock) {
           stock.buyMoreShares();
+          res.send('done');
         } else {
           var newStock = new Stock({
             symbol: req.body.symbol,
@@ -46,17 +47,17 @@ module.exports = (function() {
       })
     },
 
-    removeShare: function(req, res) {
-      Stock.findOne({
-        _id: req.params.id
-      }, function(err, stock) {
-          if (err) {
-            res.json(err)
-          } else {
-            stock.removeShares();
-            console.log('Share Removed')
-          }
-      })
+    removeShare: function(req, res, next) {
+
+      findStock({_id: req.params.id})
+        .then(function(stock) {
+          stock.removeShares();
+          res.json('shares updated');
+          console.log('Share Removed')
+        })
+        .catch(function(err) {
+          next(new Error('No shares'))
+        })
     },
 
     removeStock: function(req, res) {
