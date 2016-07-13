@@ -7,6 +7,9 @@
     "start": "node server/server.js",
     "postinstall": "bower install"
   },
+  "engines" : {
+    "node": "6.2.2"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Mailnickko/stockTrack.git"
